@@ -7,17 +7,17 @@ import PageNotFound from "./pages/PageNotFound.jsx";
 function App() {
 
 
-  return (
-    <>
-      <Header />
+    return (
+        <>
+            <Header/>
 
-        <Routes>
-            <Route path='/' element={<Login />} />
+            <Routes>
+                <Route path='/' element={<Login/>}/>
 
-            <Route path="*" element={<PageNotFound />} />
-        </Routes>
-    </>
-  )
+                <Route path="*" element={<PageNotFound/>}/>
+            </Routes>
+        </>
+    )
 }
 
 export default App

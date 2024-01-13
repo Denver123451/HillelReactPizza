@@ -1,88 +1,97 @@
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 
 #root {
-  max-width: 1280px;
-  height: 100%;
-  margin: 0 auto;
+    max-width: 1280px;
+    height: 100%;
+    margin: 0 auto;
 }
 
-.headerWrapper{
-  width: 100%;
-  display: flex;
-  background-color: #f1be1c;
-  justify-content: space-between;
-  align-items: center;
+.headerWrapper {
+    width: 100%;
+    display: flex;
+    background-color: #f1be1c;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .headerName {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 .HeaderInput {
-  height: 20px;
-  background-color: #fef08a;
-  margin: 5px 10px 5px 5px;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  border-radius: 8px;
-  border: 1px solid transparent;
+    height: 20px;
+    background-color: #fef08a;
+    margin: 5px 10px 5px 5px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid transparent;
 }
 
 
-.loginPageWrapper{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f1f5f9;
-  height: 100%;
+.loginPageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f5f9;
+    height: 100%;
 }
 
 .loginPageTitle {
-  padding-top: 40px;
-  margin-bottom: 10px;
-  font-size: 25px;
+    padding-top: 40px;
+    margin-bottom: 10px;
+    font-size: 25px;
 }
 
-.loginPageSlogan{
-  margin-top: 5px;
-  padding-top: 5px;
-  margin-bottom: 10px;
-  font-size: 25px;
-  color: #ebb308;
-  font-weight: 700;
+.loginPageSlogan {
+    margin-top: 5px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #ebb308;
+    font-weight: 700;
 }
 
 .loadingPageMain {
-  margin-top: 5px;
-  padding-top: 5px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  font-weight: 300;
+    margin-top: 5px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 300;
 }
 
-.loadingPageInput{
-  height: 30px;
-  padding: 5px 15px 5px 15px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  color: #989ba1;
-  margin-bottom: 30px;
+.loadingPageInput {
+    height: 30px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: #989ba1;
+    margin-bottom: 30px;
 }
+
 .loadingPageInput::placeholder {
-  color: #989ba1;
+    color: #989ba1;
 }
+
 
 .loadingPageButton {
-  width: 180px;
-  height: 50px;
-  padding: 5px 15px 5px 15px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  color: #989ba1;
-  margin-bottom: 120px;
+    width: 180px;
+    height: 50px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: #989ba1;
+    margin-bottom: 120px;
+}
+
+.loginPageForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center
 }
