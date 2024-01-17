@@ -1,9 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext(null);
 UserContext.displayName = "UserContext";
 const ToogleContext = ({ children }) => {
-  const [userName, setUserName] = useState(false);
+  const [userName, setUserName] = useState(
+    localStorage.getItem("userName") || "",
+  );
+
+  useEffect(() => {
+    localStorage.setItem("userName", userName);
+  }, [userName]);
 
   const userInfo = {
     value: userName,

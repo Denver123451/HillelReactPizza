@@ -24,7 +24,7 @@ body {
 }
 
 .headerName {
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .HeaderInput {
@@ -36,6 +36,10 @@ body {
     font-weight: 500;
     border-radius: 8px;
     border: 1px solid transparent;
+}
+
+.UserName{
+    padding-right: 20px;
 }
 
 
@@ -98,4 +102,68 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center
+}
+
+.menuUL {
+    width: 90%;
+    padding-right: 20px;
+}
+
+.menuItem {
+    padding-top: 10px;
+    display: flex;
+    height: 150px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+    justify-content: space-between
+
+}
+
+.menuItemImage{
+    margin-right: 10px;
+}
+
+.black-and-white-image{
+    filter: grayscale(100%);
+    margin-right: 10px;
+}
+
+
+.menuItemUl{
+    display: flex;
+    padding-left: 1px;
+    margin-bottom: 35px;
+}
+
+.menuItemLi{
+    list-style-type: none;
+    font-style: italic
+}
+
+.menuItemDescription{
+    display: flex;
+    flex-grow: 1
+}
+
+.menuItemDiv{
+    width: 85%;
+}
+
+.menuItemTitle{
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.menuItemPrice{
+    font-size: 22px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.menuItemButton {
+    width: 150px;
+    background-color: #f1be1c;
+    height: 40px;
 }
