@@ -1,7 +1,3 @@
-html {
-    height: 100%;
-}
-
 body {
     height: 100%;
     margin: 0;
@@ -25,6 +21,24 @@ body {
 
 .headerName {
     padding-left: 20px;
+}
+
+.navigate {
+    max-width: 200px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid #fef08a;
+}
+
+.navItem{
+    color: #fef08a;
+    padding-right: 10px;
+}
+
+.navItem:hover{
+    color: #aba071;
 }
 
 .HeaderInput {
@@ -166,4 +180,64 @@ body {
     width: 150px;
     background-color: #f1be1c;
     height: 40px;
+}
+
+.cartName {
+    display: flex;
+    font-size: 25px;
+    font-weight: 500;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    justify-content: center
+}
+
+.cartItemsHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.cartItemWrapper{
+    display: flex;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #cbc9c9;
+    align-items: center;
+    width: 800px;
+    justify-content: space-between
+}
+
+.cartItemHolder{
+    display: flex;
+    align-items: center;
+}
+
+.cartItemQty {
+    font-size: 22px;
+    font-weight: 500;
+    padding-right: 10px;
+}
+
+.cartItemPizzaName {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.cartItemPlus {
+    background-color: #f1be1c;
+    margin-right: 5px;
+}
+
+.buttonBackToMenu{
+    margin-left: 250px;
+    color: #535bf2;
+    background-color: transparent;
+}
+.buttonBackToMenu:hover{
+    background-color: #535bf2;
+    color:white;
+}
+
+.active{
+    text-decoration: underline;
 }

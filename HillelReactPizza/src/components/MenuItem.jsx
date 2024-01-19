@@ -1,7 +1,16 @@
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/slices/cartSlice.js";
+
 const MenuItem = ({ item }) => {
   const { name, unitPrice, imageUrl, ingredients, soldOut } = item;
 
+  const dispatch = useDispatch();
+
   const arrLenght = ingredients.length;
+
+  const handelAddToCart = () => {
+    dispatch(addToCart(item));
+  };
 
   return (
     <li className="menuItem">
@@ -29,7 +38,13 @@ const MenuItem = ({ item }) => {
           </p>
         </div>
 
-        <button className="menuItemButton"> Add to cart</button>
+        <button
+          disabled={soldOut}
+          className="menuItemButton"
+          onClick={handelAddToCart}
+        >
+          Add to cart
+        </button>
       </div>
     </li>
   );

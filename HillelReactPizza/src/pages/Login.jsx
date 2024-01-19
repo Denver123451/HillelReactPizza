@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../components/context/UserInfoContext.jsx";
+import { UserContext } from "../context/UserInfoContext.jsx";
 
 const Login = () => {
   const { value, onChange } = useContext(UserContext);
