@@ -1,34 +1,31 @@
 import { useEffect, useState } from "react";
-import { URL } from "../constans/constants.js";
 import MenuItem from "../components/MenuItem.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { getMenuItems } from "../redux/slices/getMenuSlice.js";
 
 const Menu = () => {
-  const [menu, setMenu] = useState([]);
+  const dispatch = useDispatch();
+  const { isLoading, isError, menuItems } = useSelector(
+    (state) => state.getMenu,
+  );
 
   useEffect(() => {
-    const getMenu = async () => {
-      try {
-        const resoult = await fetch(`${URL}/menu`);
+    dispatch(getMenuItems());
+  }, [dispatch]);
 
-        if (!resoult.ok) {
-          throw new Error("failed to fetch");
-        }
+  if (isError) {
+    return <h2>loading error</h2>;
+  }
+  if (isLoading) {
+    return <div className="loader"></div>;
+  }
 
-        const { data } = await resoult.json();
-        setMenu(data);
-      } catch (e) {
-        console.log(e.massage);
-      }
-    };
-    getMenu(menu);
-  }, []);
   return (
     <div className="loginPageWrapper">
       <h1>Our menu</h1>
       <ul className="menuUL">
-        {menu.map((item) => (
-          <MenuItem item={item} key={item.id} />
-        ))}
+        {!!menuItems &&
+          menuItems.map((item) => <MenuItem item={item} key={item.id} />)}
       </ul>
     </div>
   );

@@ -25,7 +25,7 @@ const Cart = () => {
   const isItems = items.length > 0;
 
   return (
-    <>
+    <div className="loginPageWrapper">
       <button onClick={handleNavigateTuMenu} className="buttonBackToMenu">
         {" "}
         ← Back to menu
@@ -41,7 +41,7 @@ const Cart = () => {
               <CartItem key={item.id} item={item} />
             ))}
           </ul>
-          <div>
+          <div className="cartPageButtonWrapper">
             <button onClick={handelOrderPizzas} className="cartItemPlus">
               {" "}
               ORDER PIZZAS
@@ -50,7 +50,7 @@ const Cart = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
