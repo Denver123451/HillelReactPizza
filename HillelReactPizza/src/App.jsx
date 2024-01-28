@@ -5,6 +5,7 @@ import Login from "./pages/Login.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import Menu from "./pages/Menu.jsx";
 import Cart from "./pages/Cart.jsx";
+import OrderNew from "./pages/OrderNew.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/Order" element={<OrderNew />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>

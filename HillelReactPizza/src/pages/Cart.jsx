@@ -15,11 +15,16 @@ const Cart = () => {
   };
 
   const handelOrderPizzas = () => {
+    handleNavigateTuOrder();
     console.log(items);
   };
   const navigate = useNavigate();
   const handleNavigateTuMenu = () => {
     navigate("/menu");
+  };
+
+  const handleNavigateTuOrder = () => {
+    navigate("/order");
   };
 
   const isItems = items.length > 0;

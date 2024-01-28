@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import MenuItem from "../components/MenuItem.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getMenuItems } from "../redux/slices/getMenuSlice.js";

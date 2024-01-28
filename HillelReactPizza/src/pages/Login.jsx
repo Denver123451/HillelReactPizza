@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserInfoContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { value, onChange } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     onChange(event.target.value);
@@ -10,7 +13,11 @@ const Login = () => {
 
   const handleClick = () => {
     event.preventDefault();
-    console.log(value);
+    handleNavigateTuMenu();
+  };
+
+  const handleNavigateTuMenu = () => {
+    navigate("/menu");
   };
 
   return (
@@ -32,11 +39,12 @@ const Login = () => {
           onChange={handleInputChange}
         />
         <button
+          disabled={!value}
           type="submit"
           className="loadingPageButton"
           // onClick={handleClick}
         >
-          console.log з ім'ям
+          Go to menu
         </button>
       </form>
     </div>
