@@ -1,14 +1,16 @@
-import { useContext } from "react";
-import { UserContext } from "../context/UserInfoContext.jsx";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// import {deleteCart} from "../redux/slices/cartSlice.js";
+import { addUserName } from "../redux/slices/userInfoSlice.js";
 
 const Login = () => {
-  const { value, onChange } = useContext(UserContext);
-
+  const dispath = useDispatch();
+  const name = useSelector((state) => state.userInfo.userName);
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
-    onChange(event.target.value);
+    // onChange(event.target.value);
+    dispath(addUserName(event.target.value));
   };
 
   const handleClick = () => {
@@ -35,15 +37,10 @@ const Login = () => {
         <input
           className="loadingPageInput"
           type="text"
-          placeholder="Your full name"
+          placeholder={name ? name : "Your full name"}
           onChange={handleInputChange}
         />
-        <button
-          disabled={!value}
-          type="submit"
-          className="loadingPageButton"
-          // onClick={handleClick}
-        >
+        <button disabled={!name} type="submit" className="loadingPageButton">
           Go to menu
         </button>
       </form>

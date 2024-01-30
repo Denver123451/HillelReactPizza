@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem.jsx";
 import { deleteCart } from "../redux/slices/cartSlice.js";
-import { useContext } from "react";
-import { UserContext } from "../context/UserInfoContext.jsx";
+
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { value } = useContext(UserContext);
+  const name = useSelector((state) => state.userInfo.userName);
   const items = useSelector((state) => state.cart.items);
   const dispath = useDispatch();
 
@@ -16,8 +15,8 @@ const Cart = () => {
 
   const handelOrderPizzas = () => {
     handleNavigateTuOrder();
-    console.log(items);
   };
+
   const navigate = useNavigate();
   const handleNavigateTuMenu = () => {
     navigate("/menu");
@@ -36,7 +35,7 @@ const Cart = () => {
         ← Back to menu
       </button>
 
-      <div className="cartName">Your cart, {value}</div>
+      <div className="cartName">Your cart, {name}</div>
       {!isItems ? (
         <div className="cartName">Please make your order.</div>
       ) : (

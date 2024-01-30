@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../context/UserInfoContext.jsx";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { store } from "../redux/store.js";
+// import { store } from "../redux/store.js";
 
 const Header = () => {
   const data = useSelector((store) => store.cart.items);
+  const name = useSelector((state) => state.userInfo.userName);
 
   const [isCartEmpty, setIsCartEmpty] = useState(true);
 
@@ -16,8 +16,6 @@ const Header = () => {
       setIsCartEmpty(true);
     }
   }, [data]);
-
-  const { value } = useContext(UserContext);
 
   return (
     <div className="headerWrapper">
@@ -35,7 +33,7 @@ const Header = () => {
         )}
       </nav>
       <input className="HeaderInput" placeholder="Search for the order #" />
-      <h5 className="UserName">{value ? value : "Login please "}</h5>
+      <h5 className="UserName">{name ? name : "Login please "}</h5>
     </div>
   );
 };

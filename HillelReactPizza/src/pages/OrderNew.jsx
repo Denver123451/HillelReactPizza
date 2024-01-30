@@ -1,19 +1,24 @@
 import { useForm, Controller } from "react-hook-form";
-import { useContext, useRef, useState } from "react";
-import { UserContext } from "../context/UserInfoContext.jsx";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchema } from "../validation/validationSchema.js";
 import Input from "../components/Input.jsx";
 import { useSelector } from "react-redux";
+import { ref } from "yup";
+import Checkbox from "../components/Checkbox.jsx";
+import Button from "../components/Button.jsx";
 
 const OrderNew = () => {
-  const { value } = useContext(UserContext);
+  const name = useSelector((state) => state.userInfo.userName);
 
   const [priority, setPriority] = useState(false);
 
-  const { register, handleSubmit, reset, control } = useForm({
+  const { handleSubmit, reset, control } = useForm({
     defaultValues: {
-      name: value,
+      name: name,
+      tel: "Please enter your phone number in this field",
+      address: "Please enter address in this field",
+      checkbox: false,
     },
     resolver: yupResolver(validationSchema),
   });
@@ -22,8 +27,6 @@ const OrderNew = () => {
     console.log(data);
     reset();
   };
-
-  const inputRef = useRef(null);
 
   const items = useSelector((state) => state.cart.items);
 
@@ -52,10 +55,10 @@ const OrderNew = () => {
             <Input
               name="name"
               error={error}
-              value={field.value || ""}
+              value={field.value}
               onChange={field.onChange}
               onBlur={field.onBlur}
-              ref={inputRef}
+              ref={ref}
               label="First Name"
               placeholder="name"
             />
@@ -72,9 +75,9 @@ const OrderNew = () => {
               value={field.value || ""}
               onChange={field.onChange}
               onBlur={field.onBlur}
-              ref={inputRef}
+              ref={ref}
               label="Phone number"
-              placeholder=""
+              placeholder="tel"
             />
           )}
         />
@@ -89,28 +92,34 @@ const OrderNew = () => {
               value={field.value || ""}
               onChange={field.onChange}
               onBlur={field.onBlur}
-              ref={inputRef}
+              ref={ref}
               label="Address"
               placeholder=""
             />
           )}
         />
 
-        <label className="orderFormLabelCheckbox">
-          <input
-            type="checkbox"
-            {...register("checkbox")}
-            className="orderFormCheckbox"
-            onClick={(e) => {
-              setPriority(e.target.checked);
-            }}
-          />
-          Want to give yor order priority?
-        </label>
+        <Controller
+          name="checkbox"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              label="Want to give yor order priority?"
+              value={field.value || ""}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              ref={ref}
+              onClick={setPriority}
+            />
+          )}
+        />
 
-        <button type="submit" className="orderButton">
-          ORDER NOW FOR {sum()}
-        </button>
+        <Button
+          type="submit"
+          className="orderButton"
+          label="ORDER NOW FOR €"
+          func={sum}
+        />
       </form>
     </div>
   );

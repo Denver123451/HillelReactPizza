@@ -1,8 +1,7 @@
-import { forwardRef } from "react";
-
-const Input = forwardRef((props, ref) => {
+const Input = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { value, onChange, onBlur, name, label, placeholder, error } = props;
+  const { value, onChange, onBlur, name, label, ref, placeholder, error } =
+    props;
 
   return (
     <>
@@ -22,6 +21,6 @@ const Input = forwardRef((props, ref) => {
       {error && <p className="formError">{error.message}</p>}
     </>
   );
-});
+};
 
 export default Input;
