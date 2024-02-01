@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 import { ref } from "yup";
 import Checkbox from "../components/Checkbox.jsx";
 import Button from "../components/Button.jsx";
+import { backendURL } from "../constans/constants.js";
 
 const OrderNew = () => {
   const name = useSelector((state) => state.userInfo.userName);
-
+  const items = useSelector((state) => state.cart.items);
   const [priority, setPriority] = useState(false);
 
   const { handleSubmit, reset, control } = useForm({
@@ -24,11 +25,54 @@ const OrderNew = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const cartData = [];
+
+    items.forEach((item) => {
+      let newObj = {
+        name: item.name,
+        pizzaId: item.id,
+        quantity: item.qty,
+        totalPrice: item.qty * item.unitPrice,
+        unitPrice: item.unitPrice,
+      };
+      cartData.push(newObj);
+    });
+
+    const postData = {
+      address: data.address,
+      customer: data.name,
+      phone: data.tel,
+      priority: data.checkbox,
+      position: "",
+      cart: cartData,
+    };
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    };
+
+    const request = async () => {
+      try {
+        const res = await fetch(backendURL, options);
+
+        if (!res.ok) {
+          console.log("error");
+          throw new Error("failed to fetch");
+        }
+        const data = await res.json();
+        console.log(data, "answer");
+      } catch (e) {
+        console.log(e.message);
+        return Promise.reject();
+      }
+    };
+    request();
     reset();
   };
-
-  const items = useSelector((state) => state.cart.items);
 
   const sum = () => {
     let price = 0;
