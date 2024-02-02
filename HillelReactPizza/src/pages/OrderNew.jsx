@@ -3,16 +3,21 @@ import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchema } from "../validation/validationSchema.js";
 import Input from "../components/Input.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ref } from "yup";
 import Checkbox from "../components/Checkbox.jsx";
 import Button from "../components/Button.jsx";
 import { backendURL } from "../constans/constants.js";
+import { useNavigate } from "react-router-dom";
+import { addOrderDetails } from "../redux/slices/orderDetailsSlice.js";
 
 const OrderNew = () => {
   const name = useSelector((state) => state.userInfo.userName);
   const items = useSelector((state) => state.cart.items);
   const [priority, setPriority] = useState(false);
+  const [fail, setFail] = useState(false);
+  const navigate = useNavigate();
+  const dispath = useDispatch();
 
   const { handleSubmit, reset, control } = useForm({
     defaultValues: {
@@ -61,10 +66,17 @@ const OrderNew = () => {
 
         if (!res.ok) {
           console.log("error");
+          setFail(true);
           throw new Error("failed to fetch");
         }
         const data = await res.json();
-        console.log(data, "answer");
+        if (data.status === "success") {
+          dispath(addOrderDetails(data));
+          navigate(`${data.data.id}`);
+        } else {
+          setFail(true);
+          console.log(data, "fail");
+        }
       } catch (e) {
         console.log(e.message);
         return Promise.reject();
@@ -165,6 +177,11 @@ const OrderNew = () => {
           func={sum}
         />
       </form>
+      {fail ? (
+        <div className="downloadError"> Something went wrong </div>
+      ) : (
+        <div className="downloadError"> </div>
+      )}
     </div>
   );
 };

@@ -333,11 +333,120 @@ body {
     background-color: #f1be1c;
     margin-right: 5px;
     max-width: 250px;
-    margin-bottom: 500px;
+    /*margin-bottom: 500px;*/
 }
 
 .formError {
     color: red;
     display: flex;
     justify-content: center
+}
+
+.downloadError {
+    color: red;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 500px;
+}
+
+.orderDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1f5f9;
+    height: 100%;
+}
+
+.orderDetailsInfo{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.orderDetailsId{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.orderDetailsPreparing{
+    font-size: 20px;
+    color: white;
+    background-color: #22c35d;
+    width: 200px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.orderDetailsPriority{
+    display: flex;
+    align-items: center
+}
+
+.orderDetailsPriorityItem{
+    font-size: 20px;
+    color: white;
+    background-color: #ed4343;
+    width: 200px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.orderDetailsTime{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #e5e3e2;
+    justify-self: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.orderDetailsUl{
+    padding-left: 0;
+}
+
+.OrderDetailsItemWrapper{
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #e3e1e0;
+    border-bottom: 1px solid #e3e1e0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.OrderDetailsItemMultiplier{
+    font-weight: 500;
+}
+
+.orderDetailsPrice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e5e3e2;
+    font-weight: 500;
+    padding: 10px 0 10px 0;
+    border-radius: 10px;
+}
+
+.orderDetailsButtonWrap{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 500px;
+    margin-top: 20px;
+}
+
+.orderDetailsButton{
+    max-width: 250px;
+    background-color: #e8b208;
+    margin-right: 200px;
 }
