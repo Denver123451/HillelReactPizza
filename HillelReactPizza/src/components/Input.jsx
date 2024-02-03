@@ -1,24 +1,20 @@
+import { useController } from "react-hook-form";
+
 const Input = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { value, onChange, onBlur, name, label, ref, placeholder, error } =
-    props;
+  const { name, label } = props;
+
+  const { field, fieldState } = useController(props);
 
   return (
     <>
       <label className="orderFormLabel">
         {label}
-        <input
-          className="orderFormInput"
-          type="text"
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          ref={ref}
-          name={name}
-          placeholder={placeholder}
-        />
+        <input className="orderFormInput" type="text" name={name} {...field} />
       </label>
-      {error && <p className="formError">{error.message}</p>}
+      {fieldState.error && (
+        <p className="formError">{fieldState.error.message}</p>
+      )}
     </>
   );
 };

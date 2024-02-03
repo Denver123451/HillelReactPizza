@@ -1,27 +1,32 @@
 import "./App.css";
 import Header from "./components/Header.jsx";
 import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login.jsx";
-import PageNotFound from "./pages/PageNotFound.jsx";
-import Menu from "./pages/Menu.jsx";
-import Cart from "./pages/Cart.jsx";
-import OrderNew from "./pages/OrderNew.jsx";
-import OrderDetails from "./pages/OrderDetails.jsx";
+import { lazy, Suspense } from "react";
+import Loader from "./components/Loader.jsx";
+
+const HomeLazy = lazy(() => import("./pages/Login.jsx"));
+const MenuLazy = lazy(() => import("./pages/Menu.jsx"));
+const CartLazy = lazy(() => import("./pages/Cart.jsx"));
+const OrderLazy = lazy(() => import("./pages/OrderNew.jsx"));
+const OrderDetailsLazy = lazy(() => import("./pages/OrderDetails.jsx"));
+
+const PageNotFoundLazy = lazy(() => import("./pages/PageNotFound.jsx"));
 
 function App() {
   return (
     <>
       <Header />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomeLazy />} />
+          <Route path="/menu" element={<MenuLazy />} />
+          <Route path="/cart" element={<CartLazy />} />
+          <Route path="/Order" element={<OrderLazy />} />
+          <Route path="/order/:id" element={<OrderDetailsLazy />} />
 
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/Order" element={<OrderNew />} />
-        <Route path="/order/:id" element={<OrderDetails />} />
-
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+          <Route path="*" element={<PageNotFoundLazy />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

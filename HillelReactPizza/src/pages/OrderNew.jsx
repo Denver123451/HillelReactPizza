@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchema } from "../validation/validationSchema.js";
@@ -104,70 +104,17 @@ const OrderNew = () => {
       <div className="orderPageTitle">Ready to order? Lets go!</div>
 
       <form className="orderForm" onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name="name"
-          control={control}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              name="name"
-              error={error}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              ref={ref}
-              label="First Name"
-              placeholder="name"
-            />
-          )}
-        />
+        <Input control={control} name="name" label="First Name" />
 
-        <Controller
-          name="tel"
-          control={control}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              name="tel"
-              error={error}
-              value={field.value || ""}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              ref={ref}
-              label="Phone number"
-              placeholder="tel"
-            />
-          )}
-        />
+        <Input control={control} name="tel" label="Phone number" />
 
-        <Controller
-          name="address"
-          control={control}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              name="address"
-              error={error}
-              value={field.value || ""}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              ref={ref}
-              label="Address"
-              placeholder=""
-            />
-          )}
-        />
+        <Input control={control} name="address" label="Address" />
 
-        <Controller
+        <Checkbox
+          control={control}
           name="checkbox"
-          control={control}
-          render={({ field }) => (
-            <Checkbox
-              label="Want to give yor order priority?"
-              value={field.value || ""}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              ref={ref}
-              onClick={setPriority}
-            />
-          )}
+          label="Want to give yor order priority?"
+          onClick={setPriority}
         />
 
         <Button

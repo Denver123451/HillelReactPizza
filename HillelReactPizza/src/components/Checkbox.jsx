@@ -1,16 +1,16 @@
+import { useController } from "react-hook-form";
+
 const Checkbox = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { label, value, onClick, onChange, onBlur, ref } = props;
+  const { label, onClick } = props;
+  const { field } = useController(props);
   return (
     <>
       <label className="checkbox">
         <input
           type="checkbox"
           className="orderFormCheckbox"
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          ref={ref}
+          {...field}
           onClick={(e) => {
             onClick(e.target.checked);
           }}
